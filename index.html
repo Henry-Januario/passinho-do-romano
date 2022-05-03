@@ -5,26 +5,103 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mensagem Codificada</title>
+    <title>Mensagem Oculta</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
     <header>
-        <h1>Mensagem Codificada</h1>
+        <h1>Mensagem Oculta</h1>
     </header>
-    <div class="conteúdo">
+
+    <div class="conteudo">
+
         <p class="msgcod">Curioso(a), hein?</p>
         <main>
             <div>
-                <p>Escolha qual codigo você quer utilizar:</p>
-                <input type="radio" name="radio" id="caesar"> <input type="radio" name="base64" id="base">
-                <button>Codificar</button> <button>Decodificar</button>
+                <p>Escolha qual método você quer utilizar: <br>
+
+                <div id="p" onclick="abrePassos()">
+
+                    <div onclick="abrePassos()">
+                        <!-- caixa para selecionar método -->
+                        <select id="select" onclick="abrePassos()">
+                            <option value="1" onclick="abrePassos()">Selecione o método:</option>
+                            <option value="2">Base64</option>
+                            <option value="3">Cifra de César</option>
+                        </select>
+                        <br><br>
+
+
+                        <div id="passos" class="passos" onclick="abrePassos()">
+                            <!-- caixa para selecionar numero de passos -->
+                            <br>
+                            <p>Digite o número de passos <br> (mín = 1; max = 25):</p>
+                            <input type="number" name="passo" id="passo" min="1" max="25">
+                        </div>
+                    </div>
+
+                    <br>
+                </div>
+
+
+                <br>
+                <!-- Botoes de codificar ou decodificar -->
+                <input type="radio" name="radcod" id="codificar" value="codificar" checked
+                    onclick="mudaBtn()">Codificar</input>
+                <input type="radio" name="radcod" id="decodificar" value="decodificar"
+                    onclick="mudaBtn()">Decodificar</input>
+                </p>
+
+                <div class="msg">
+                    <p>
+                        <!-- Campo de entrada textual -->
+                    <h2>Digite a mensagem:</h2>
+                    <textarea name="" id="entrada" class='txta' cols="30" rows="10"></textarea>
+                    </p>
+                </div>
+
+                <div class="botao">
+                    <p>
+                        <!--■ Um botão que, com "codificar" selecionado exibe o texto "Codificar
+                    Mensagem!" e com "decodificar" selecionado exibe "Decodificar
+                    Mensagem!" -->
+                        <input type="button" value="Codificar Mensagem!" id="btn" class="btn" onclick="codificar()">
+                    </p>
+                </div>
+
+                <div class="res">
+                    <p>
+                        <!-- Campo de saída textual -->
+                    <h2>Resultado: </h2>
+                    <textarea name="" id="saida" class='txta' cols="30" rows="10"></textarea>
+                    </p>
+                </div>
             </div>
         </main>
-        <img src="./imagens/149f71e750206b07b3c46667963525f5.jpg" alt="">
+        <img src="./imagens/mariposa.png" class='img' alt="mariposa">
     </div>
+
+
     <script src="index.js"></script>
 </body>
 
 </html>
+
+<!-- 
+● Sua aplicação deve ser capaz de codificar e decodificar mensagens utilizando
+tanto base64 quanto cifra de césar.
+● Para isso, ela deve conter um formulário com:
+
+
+■ Com "cifra de césar" ativo na seleção, um novo campo deve surgir
+no formulário para que seja possível fornecer o incremento
+utilizado na cifra
+
+■ Um botão que, com "codificar" selecionado exibe o texto "Codificar
+Mensagem!" e com "decodificar" selecionado exibe "Decodificar
+Mensagem!"
+
+
+○ Sua página deve estar contida em um repositório no Github e uma página
+do Github pages deve ser disponibilizada com sua aplicação. -->

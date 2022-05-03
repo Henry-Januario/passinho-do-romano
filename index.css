@@ -1,8 +1,44 @@
 body {
     background-color: #000000;
     color: white;
+    padding-left: 30px;
+    font-family: "Roboto Mono", monospace;
 }
 
 .msgcod {
-    color: black;
+    color: rgb(0, 0, 0);
+}
+
+.conteudo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+    margin-top: 10%;
+    /*background-color: rgb(14, 14, 14);*/
+}
+.passos{
+    background-color: red;
+    display: none;
+}
+.txta{
+    height: 50px;
+}
+
+img {
+    width: 300px;
+}
+
+@media (max-width: 768px){
+
+    .conteudo{
+        margin-left: 6%;
+        flex-direction: column;
+    }
+
+    .img{
+        width: 300px;
+        justify-content: center;
+        margin-right: 45px;
+    }
 }
