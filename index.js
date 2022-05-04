@@ -22,42 +22,7 @@ function mudaBtn() {
 ■ Com "cifra de césar" ativo na seleção, um novo campo deve surgir
 no formulário para que seja possível fornecer o incremento
 utilizado na cifra
-
- */
-
-/* 
-
-//tentativa de criar um input através da seleção
-
-function abrePasso() {
-    var metodo = document.getElementById('metodo')
-    var input = document.createElement("input");
-    input.setAttribute("type", "number");
-
-
-    function abre(){
-        document.p.appendChild(input)
-
-    }
-    metodo.addEventListener('change', abre)
-}
-
- */
-/* tentativa de criar um display que suma
-function abrePassos() {
-    var passos = document.getElementById('passos')
-    var base = document.getElementById('metodoBase')
-    var cifra = document.getElementById('metodoCifra')
-
-    if (cifra.checked == true) {
-        passos.style.display = "inline";
-
-    }else{
-        passos.style.display = "none";
-
-    }
-}
- */
+*/
 
 function abrePassos() {
     var passos = document.getElementById('passos')
@@ -73,11 +38,18 @@ function abrePassos() {
 }
 
 
+function codificar(){
+    if (select.value == "2") {
+        codificarEDecodificarBase()
+    } else if (select.value == "3"){
+        codificarEDecodificarCesar()
+    }
 
+}
 
 
 /* Essa função está sem chamar no html */
-function codificarBase() {
+function codificarEDecodificarBase() {
     var codificar = document.querySelector('#codificar')
     var decodificar = document.querySelector('#decodificar')
     var entrada = document.querySelector('#entrada')
@@ -91,3 +63,49 @@ function codificarBase() {
 
 }
 
+function codificarEDecodificarCesar() {
+    var codificar = document.querySelector('#codificar')
+    var decodificar = document.querySelector('#decodificar')
+    var entrada = document.querySelector("#entrada").value.toLowerCase()
+    var passo = document.querySelector('#passo').value
+    var numInt = parseInt(passo)
+    var res = ''
+    var alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ",]
+
+    if (select.value == "3" && codificar.checked) {
+        for (var i = 0; i < entrada.length; i++) {
+            if (entrada[i] != '') {
+                for (let j = 0; j < alfabeto.length; j++) {
+                    if (entrada[i] == alfabeto[j]) {
+                        res += alfabeto[(j + numInt) % alfabeto.length]
+                    }
+
+                }
+            } else {
+                res += ''
+            }
+        } 
+        document.querySelector('#saida').innerHTML = `${res}`;
+        return res
+
+    } else if (select.value == "3" && decodificar.checked){
+        for (let i = 0; i < entrada.length; i++) {
+            if (entrada[i] != " ") {
+                for (let j = 0; j < alfabeto.length; j++) {
+                    if (entrada[i] == alfabeto[j] && (j - numInt) % 26 >= 0) {
+                        res += alfabeto[(j - numInt) % alfabeto.length]
+                    }
+                    else if (entrada[i] == alfabeto[j] && (j - numInt) % 26 < 0) {
+                        res += alfabeto[alfabeto.length + (j - numInt) % alfabeto.length]
+                    }
+                }
+            }
+            else {
+                res += " ";
+            }
+        }
+        document.querySelector('#saida').innerHTML = `${res}`
+        return res
+    }
+    
+}
