@@ -41,7 +41,8 @@ function abrePassos() {
 function codificar(){
     if (select.value == "2") {
         codificarEDecodificarBase()
-    } else if (select.value == "3"){
+    }
+    if (select.value == "3"){
         codificarEDecodificarCesar()
     }
 
@@ -57,7 +58,7 @@ function codificarEDecodificarBase() {
 
     if (select.value == "2" && codificar.checked) {
         saida.value = btoa(entrada.value)
-    } else if (select.value = "2" && decodificar.checked) {
+    } else if (select.value == "2" && decodificar.checked) {
         saida.value = atob(entrada.value)
     }
 
@@ -69,6 +70,7 @@ function codificarEDecodificarCesar() {
     var entrada = document.querySelector("#entrada").value.toLowerCase()
     var passo = document.querySelector('#passo').value
     var numInt = parseInt(passo)
+    var saida = document.querySelector('#saida')
     var res = ''
     var alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ",]
 
@@ -85,8 +87,8 @@ function codificarEDecodificarCesar() {
                 res += ''
             }
         } 
-        document.querySelector('#saida').innerHTML = `${res}`;
-        return res
+       
+        return saida.value = res
 
     } else if (select.value == "3" && decodificar.checked){
         for (let i = 0; i < entrada.length; i++) {
@@ -104,8 +106,7 @@ function codificarEDecodificarCesar() {
                 res += " ";
             }
         }
-        document.querySelector('#saida').innerHTML = `${res}`
-        return res
+        return saida.value = res
     }
     
 }
